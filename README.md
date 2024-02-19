@@ -25,10 +25,10 @@ HashSet을 사용하여 상품 목록을 만들고, HashMap을 사용하여 장�
 <br>
 
 
-- **다음과 같은 함수를 가지고 있어야 합니다.**
-    - *`showItems( )`*
-    - *`addProduct( )`*
-    - *`removeProduct( )`*
+다음과 같은 함수를 가지고 있어야 합니다.
+- *`showItems( )`*
+- *`addProduct( )`*
+- *`removeProduct( )`*
 
 장바구니 애플리케이션은 다음과 같은 기능들을 제공해야 합니다.
 
