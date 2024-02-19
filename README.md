@@ -51,24 +51,23 @@ HashSet을 사용하여 상품 목록을 만들고, HashMap을 사용하여 장�
 
 ```java
 public class CartApp {
-		public static void main(String[] args) {
-				// 상품 목록 생성
-				Set<Product> productSet = new HashSet<>();
-				// TODO: 상품 클래스를 생성하여 상품 목록에 넣는다.
+    public static void main(String[] args) {
+        // 상품 목록 생성
+        Set<Product> productSet = new HashSet<>();
+        // TODO: 상품 클래스를 생성하여 상품 목록에 넣는다.
 
-				// 상품 목록 확인
-				System.out.println("고유한 상품 목록:");
-				for (Product product : productSet) {
-						System.out.println(product.getName() + " : " + product.getPrice());
-				}
+        // 상품 목록 확인
+        System.out.println("고유한 상품 목록:");
+        for (Product product : productSet) {
+            System.out.println(product.getName() + " : " + product.getPrice());
+        }
 
-				// 장바구니 생성
-				Cart myCart = new Cart();
+        // 장바구니 생성
+        Cart myCart = new Cart();
 				
-				// TODO: 상품을 장바구니에 추가
-				// TODO: 상품을 장바구니에서 제거
-				// TODO: 장바구니에 현재 담긴 상품들을 출력 (상품 이름, 각 상품의 개수)
-
+        // TODO: 상품을 장바구니에 추가
+        // TODO: 상품을 장바구니에서 제거
+        // TODO: 장바구니에 현재 담긴 상품들을 출력 (상품 이름, 각 상품의 개수)
 		}
 }
 ```
