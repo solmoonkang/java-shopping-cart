@@ -1,5 +1,7 @@
 package product;
 
+import java.util.Objects;
+
 public class Product {
 
     private final Long id;
@@ -20,5 +22,10 @@ public class Product {
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
         return id.equals(product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
