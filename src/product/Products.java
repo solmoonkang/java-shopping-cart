@@ -18,7 +18,11 @@ public class Products {
     public void showProducts() {
         System.out.println("고유한 상품 목록:");
         for (Product product : products) {
-            System.out.println(product.getId() + ". " + product.getName() + " : " + product.getPrice());
+            System.out.println(product.printProductInfo());
         }
+    }
+
+    public void removeProduct(Product product) {
+        products.remove(product);
     }
 }
