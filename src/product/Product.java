@@ -20,6 +20,9 @@ public class Product {
         return String.format("%s: %d", name, price);
     }
 
+    public String printCartItemsInfo() {
+        return String.format("%s", name);
+    }
 
     @Override
     public boolean equals(Object obj) {
