@@ -17,7 +17,15 @@ public class Product {
     }
 
     public String printProductInfo() {
-        return String.format("%d. %s : %d", id, name, price);
+        return String.format("%s: %d", name, price);
+    }
+
+    public boolean hasSameId(Product product) {
+        return this.id.equals(product.id);
+    }
+
+    public boolean hasSameName(Product product) {
+        return this.name.equals(product.name);
     }
 
     @Override
