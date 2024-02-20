@@ -16,7 +16,7 @@ public class Products {
         products.add(product);
     }
 
-    public void showProducts() {
+    public void showProduct() {
         System.out.println("고유한 상품 목록:");
         products.forEach(product -> System.out.println(product.printProductInfo()));
     }
