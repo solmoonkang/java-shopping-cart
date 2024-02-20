@@ -16,23 +16,16 @@ public class Product {
         this.price = price;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPrice() {
-        return price;
+    public String printProductInfo() {
+        return String.format("%d. %s : %d", id, name, price);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Product product = (Product) obj;
         return id.equals(product.id);
     }
 
