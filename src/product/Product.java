@@ -20,13 +20,6 @@ public class Product {
         return String.format("%s: %d", name, price);
     }
 
-    public boolean hasSameId(Product product) {
-        return this.id.equals(product.id);
-    }
-
-    public boolean hasSameName(Product product) {
-        return this.name.equals(product.name);
-    }
 
     @Override
     public boolean equals(Object obj) {
