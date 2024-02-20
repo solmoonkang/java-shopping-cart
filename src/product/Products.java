@@ -17,9 +17,7 @@ public class Products {
 
     public void showProducts() {
         System.out.println("고유한 상품 목록:");
-        for (Product product : products) {
-            System.out.println(product.printProductInfo());
-        }
+        products.forEach(Product::printProductInfo);
     }
 
     public void removeProduct(Product product) {
