@@ -12,15 +12,26 @@ public class Products {
     }
 
     public void addProduct(Product product) {
+        validateProductExistence(product);
         products.add(product);
     }
 
     public void showProducts() {
         System.out.println("고유한 상품 목록:");
-        products.forEach(Product::printProductInfo);
+        products.forEach(product -> System.out.println(product.printProductInfo()));
     }
 
     public void removeProduct(Product product) {
         products.remove(product);
+    }
+
+    private void validateProductExistence(Product product) {
+        boolean exist = products
+                .stream()
+                .anyMatch(p -> p.hasSameId(product) || p.hasSameName(product));
+
+        if (exist) {
+            throw new IllegalArgumentException("[ERROR] 해당 상품은 이미 존재하는 상품입니다.");
+        }
     }
 }
