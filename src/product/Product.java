@@ -26,11 +26,11 @@ public class Product {
         if (obj == null || getClass() != obj.getClass()) return false;
 
         Product product = (Product) obj;
-        return id.equals(product.id);
+        return id.equals(product.id) && name.equals(product.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, name);
     }
 }
