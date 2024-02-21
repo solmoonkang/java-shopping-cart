@@ -6,14 +6,16 @@ import java.io.InputStreamReader;
 
 public class InputView {
 
+    private static final String COMMA = ",";
+
     private BufferedReader reader;
 
     public InputView() {
         this.reader = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    public String inputProduct() throws IOException {
+    public String[] inputProduct() throws IOException {
         System.out.println("상품 이름과 상품 가격을 입력하세요(예: 상품이름, 가격): ");
-        return reader.readLine();
+        return reader.readLine().split(COMMA);
     }
 }
