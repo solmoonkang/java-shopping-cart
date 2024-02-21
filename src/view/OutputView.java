@@ -20,7 +20,7 @@ public class OutputView {
     public static void outputCartItems(Cart cart) {
         System.out.println("장바구니에 현재 담긴 상품: \n");
 
-        for (Map.Entry<String, Integer> entry : cart.getCartItems().entrySet()) {
+        for (Map.Entry<Product, Integer> entry : cart.getCartItems().entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
         System.out.println();
