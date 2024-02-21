@@ -1,6 +1,7 @@
 package controller;
 
 import model.cart.Cart;
+import model.product.Product;
 import model.product.Products;
 import view.InputView;
 import view.OutputView;
@@ -52,14 +53,15 @@ public class CartController {
     }
 
     private void processCartAction(Products products, Cart cart, String cartAction) throws IOException {
-        if (!cartAction.equals(ACTION_READ)) {
-            String userInput = inputView.inputAddProductToCart();
-            String[] productsInfo = userInput.split(COMMA);
-            processCartItems(products, cart, productsInfo, cartAction);
-
-        } else {
+        if (cartAction.equals(ACTION_READ)) {
             OutputView.outputCartItems(cart);
+            return;
         }
+
+        String actionText = cartAction.equals(ACTION_ADD) ? ACTION_ADD : ACTION_REMOVE;
+        String userInput = inputView.inputAddProductToCart(actionText);
+        String[] productsInfo = userInput.split(COMMA);
+        processCartItems(products, cart, productsInfo, cartAction);
     }
 
     private void processCartItems(Products products, Cart cart, String[] productsInfo, String cartAction) {
@@ -71,7 +73,7 @@ public class CartController {
             if (cartAction.equals(ACTION_ADD)) {
                 addProductToCart(products, cart, productName, quantity);
             } else if (cartAction.equals(ACTION_REMOVE)) {
-                removeProductToCart(cart, productName, quantity);
+                removeProductToCart(products, cart, productName, quantity);
             }
         }
     }
@@ -86,16 +88,14 @@ public class CartController {
     }
 
     private void addProductToCart(Products products, Cart cart, String productName, int quantity) {
-        if (products.isProductExists(productName)) {
-            cart.addProductToCart(productName, quantity);
-            OutputView.outputAddProductToCart(productName, quantity);
-        } else {
-            OutputView.outputRemoveProductToCart(productName, quantity);
-        }
+        Product product = products.findProduct(productName);
+        cart.addProductToCart(product, quantity);
+        OutputView.outputAddProductToCart(productName, quantity);
     }
 
-    private void removeProductToCart(Cart cart, String productName, int quantity) {
-        cart.removeProductToCart(productName, quantity);
+    private void removeProductToCart(Products products, Cart cart, String productName, int quantity) {
+        Product product = products.findProduct(productName);
+        cart.removeProductToCart(product, quantity);
         OutputView.outputRemoveProductToCart(productName, quantity);
     }
 }
