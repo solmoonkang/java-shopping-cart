@@ -17,9 +17,11 @@ public class Products {
         return Collections.unmodifiableSet(this.products);
     }
 
-    public boolean isProductExists(String productName) {
+    public Product findProduct(String productName) {
         return products.stream()
-                .anyMatch(product -> product.getName().equals(productName));
+                .filter(product -> product.getName().equals(productName))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 해당 상품이 존재하지 않습니다."));
     }
 
     public void addProducts(String[] productInputs) {
