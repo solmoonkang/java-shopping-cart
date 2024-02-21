@@ -1,5 +1,6 @@
 package model.product;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,6 +12,10 @@ public class Products {
 
     public Products() {
         this.products = new HashSet<>();
+    }
+
+    public Set<Product> getProducts() {
+        return Collections.unmodifiableSet(this.products);
     }
 
     public void addProducts(String[] productInputs) {
