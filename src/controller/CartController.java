@@ -52,24 +52,27 @@ public class CartController {
     }
 
     private void processCartAction(Products products, Cart cart, String cartAction) throws IOException {
-        String productName = "";
-        int quantity = 0;
-
         if (!cartAction.equals(ACTION_READ)) {
             String userInput = inputView.inputAddProductToCart();
-            String[] splitInput = userInput.split(SPACE);
-            productName = splitInput[0];
-            quantity = Integer.parseInt(splitInput[1]);
-        }
+            String[] productsInfo = userInput.split(COMMA);
+            processCartItems(products, cart, productsInfo, cartAction);
 
-        if (cartAction.equals(ACTION_ADD)) {
-            addProductToCart(products, cart, productName, quantity);
-        } else if (cartAction.equals(ACTION_REMOVE)) {
-            removeProductToCart(cart, productName, quantity);
-        } else if (cartAction.equals(ACTION_READ)) {
-            OutputView.outputCartItems(cart);
         } else {
-            OutputView.outputInvalidInputError();
+            OutputView.outputCartItems(cart);
+        }
+    }
+
+    private void processCartItems(Products products, Cart cart, String[] productsInfo, String cartAction) {
+        for (String productInfo : productsInfo) {
+            String[] splitInput = productInfo.trim().split(SPACE);
+            String productName = splitInput[0];
+            int quantity = Integer.parseInt(splitInput[1]);
+
+            if (cartAction.equals(ACTION_ADD)) {
+                addProductToCart(products, cart, productName, quantity);
+            } else if (cartAction.equals(ACTION_REMOVE)) {
+                removeProductToCart(cart, productName, quantity);
+            }
         }
     }
 
