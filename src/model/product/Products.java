@@ -7,7 +7,6 @@ import java.util.Set;
 public class Products {
 
     private static final String SPACE = " ";
-
     private final Set<Product> products;
 
     public Products() {
@@ -18,9 +17,14 @@ public class Products {
         return Collections.unmodifiableSet(this.products);
     }
 
+    public boolean isProductExists(String productName) {
+        return products.stream()
+                .anyMatch(product -> product.getName().equals(productName));
+    }
+
     public void addProducts(String[] productInputs) {
         for (String productInput : productInputs) {
-            products.add(parseProduct(productInput));
+            products.add(parseProductNameAndPrice(productInput));
         }
     }
 
@@ -28,11 +32,22 @@ public class Products {
         products.removeIf(product -> product.getName().equals(productName));
     }
 
-    private Product parseProduct(String input) {
+    private Product parseProductNameAndPrice(String input) {
         String[] values = input.split(SPACE);
-        String name = values[0];
-        int price = Integer.parseInt(values[1]);
+        validateProductInputFormat(values);
+        validateProductPriceFormat(values[1]);
+        return new Product(values[0], Integer.parseInt(values[1]));
+    }
 
-        return new Product(name, price);
+    private void validateProductInputFormat(String[] values) {
+        if (values.length != 2) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력 형식입니다. 다시 입력해주세요.");
+        }
+    }
+
+    private void validateProductPriceFormat(String price) {
+        if (!price.matches("\\d+")) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 금액 형식입니다. 숫자를 입력해주세요.");
+        }
     }
 }
