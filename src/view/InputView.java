@@ -13,12 +13,12 @@ public class InputView {
     }
 
     public String handleProductAction() throws IOException {
-        System.out.println("상품 추가, 제거 중 어떤 동작을 수행하시겠습니까?");
+        System.out.println("상품 추가, 제거 중 어떤 동작을 수행하시겠습니까?(종료를 원하시면 종료를 입력해주세요.)");
         return reader.readLine();
     }
 
     public String handleCartAction() throws IOException {
-        System.out.println("장바구니에 상품 추가, 제거, 확인 중 어떤 동작을 수행하시겠습니까?");
+        System.out.println("장바구니에 상품 추가, 제거, 읽기 중 어떤 동작을 수행하시겠습니까?(종료를 원하시면 종료를 입력해주세요.)");
         return reader.readLine();
     }
 
