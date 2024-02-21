@@ -32,8 +32,8 @@ public class InputView {
         return reader.readLine();
     }
 
-    public String inputAddProductToCart() throws IOException {
-        System.out.println("장바구니에 추가하고 싶은 상품 이름과 수량을 입력하세요.(예: 상품 이름 수량): ");
+    public String inputAddProductToCart(String action) throws IOException {
+        System.out.printf("장바구니에서 %s하고 싶은 상품 이름과 수량을 입력하세요.(예: 상품 이름 수량): \n", action);
         return reader.readLine();
     }
 
