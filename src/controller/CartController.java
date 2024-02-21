@@ -16,29 +16,45 @@ public class CartController {
     }
 
     public void run() throws IOException {
-
         Products products = new Products();
-        String userAction = "";
 
-        while (!(userAction = inputView.inputUserAction()).equals("종료")) {
-            userActions(userAction, products);
+        String productAction = inputView.handleProductAction();
+
+        while (!(productAction.equals("종료"))) {
+            if (productAction.equals("추가")) {
+                createProduct(products);
+            } else if (productAction.equals("제거")) {
+                removeProduct(products);
+            } else {
+                System.out.println("잘못된 형식입니다. 다시 입력해주세요.");
+            }
+
+            productAction = inputView.handleProductAction();
+        }
+
+        OutputView.outputProducts(products);
+
+        String cartAction = inputView.handleCartAction();
+
+        while (!(cartAction.equals("종료"))) {
+            if (cartAction.equals("추가")) {
+                createProduct(products);
+            } else if (cartAction.equals("제거")) {
+                removeProduct(products);
+            } else if (cartAction.equals("읽기")) {
+                OutputView.outputCartItems();
+            } else {
+                System.out.println("잘못된 형식입니다. 다시 입력해주세요.");
+            }
+
+            cartAction = inputView.handleCartAction();
         }
     }
 
-    private void userActions(String userAction, Products products) throws IOException {
-        if (userAction.equals("등록")) {
-            createProduct(products);
-        } else if (userAction.equals("제거")) {
-            removeProduct(products);
-        } else {
-            System.out.println("잘못된 형식입니다. 다시 선택해주세요.");
-        }
-    }
 
     private void createProduct(Products products) throws IOException {
         String[] productInputs = inputView.inputAddProduct().split(COMMA);
         products.addProducts(productInputs);
-        OutputView.outputProducts(products);
     }
 
     private void removeProduct(Products products) throws IOException {
