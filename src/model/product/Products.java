@@ -24,8 +24,8 @@ public class Products {
         }
     }
 
-    public void removeProduct(Product product) {
-        products.remove(product);
+    public void removeProduct(String productName) {
+        products.removeIf(product -> product.getName().equals(productName));
     }
 
     private Product parseProduct(String input) {
