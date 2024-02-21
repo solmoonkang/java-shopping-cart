@@ -1,21 +1,24 @@
-package product;
+package model.product;
 
 import java.util.Objects;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Product {
 
+    private static final AtomicLong count = new AtomicLong(0);
     private final Long id;
     private final String name;
     private final int price;
 
-    public Product(Long id,
-                   String name,
+    public Product(String name,
                    int price) {
-        this.id = id;
+        this.id = count.incrementAndGet();
         this.name = name;
         this.price = price;
     }
 
+    // TODO: 해당 메서드를 Product 클래스에서 처리해줘야 하는지 고민해보자.
     public String printProductInfo() {
         return String.format("%s: %d", name, price);
     }
