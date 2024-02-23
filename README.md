@@ -49,25 +49,18 @@ HashSet을 사용하여 상품 목록을 만들고, HashMap을 사용하여 장�
 
 - HashSet과 HashMap을 사용하여 위의 기능들을 탑재한 장바구니를 구현하고, 다음과 같은 코드에서 정상적으로 동작하게 구성합니다.
 
-```java
-public class CartApp {
-    public static void main(String[] args) {
-        // 상품 목록 생성
-        Set<Product> productSet = new HashSet<>();
-        // TODO: 상품 클래스를 생성하여 상품 목록에 넣는다.
+<br>
 
-        // 상품 목록 확인
-        System.out.println("고유한 상품 목록:");
-        for (Product product : productSet) {
-            System.out.println(product.getName() + " : " + product.getPrice());
-        }
+<figure>
+    <figcaption style="color: darkgrey">상품 기능에 대한 결과</figcaption>
+    <img width="637" alt="상품 기능" src="https://github.com/solmoonkang/java-shopping-cart/assets/109902582/47db1fed-68d6-4260-baab-0d9b02a87025">
+</figure>
 
-        // 장바구니 생성
-        Cart myCart = new Cart();
-				
-        // TODO: 상품을 장바구니에 추가
-        // TODO: 상품을 장바구니에서 제거
-        // TODO: 장바구니에 현재 담긴 상품들을 출력 (상품 이름, 각 상품의 개수)
-    }
-}
-```
+<br>
+
+---
+
+<figure>
+    <figcaption style="color: darkgrey">장바구니 기능에 대한 결과</figcaption>
+    <img width="648" alt="장바구니 기능" src="https://github.com/solmoonkang/java-shopping-cart/assets/109902582/eb0b1ccd-581b-482e-8a6f-7ba43c70897b">
+</figure>
